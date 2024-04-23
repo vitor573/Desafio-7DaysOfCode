@@ -2,6 +2,7 @@
 require 'controller/controller.php';
 require 'view/view.php';
 require 'crud.class.php';
+require 'validate.php';
 
 $controller = new Controller();
 

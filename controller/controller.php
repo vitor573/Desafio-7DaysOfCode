@@ -1,6 +1,7 @@
 <?php
 
-class Controller {
+class Controller
+{
   private $view;
   private $crud;
   private $validate;
@@ -14,22 +15,24 @@ class Controller {
 
   public function do_register()
   {
-    if(isset($_POST["person"])){
-      $emailExiste = $this->validate->emailExists($_POST["person"]);
-      $emailExiste ? header("Location: /?page=register&from=register&erro=email"): $this->crud->crud_create($_POST["person"]);
-      $this->view->render_view('login');
-    }else{
+    if (isset($_POST["person"])) {
+      $mensages = $this->validate->validateRegister($_POST["person"]);
+      if ($mensages["success"]) {
+        $this->crud->crud_create($_POST["person"]);
+        $this->view->render_view('login',$mensages);
+      }else{
+        $this->view->render_view('register', $mensages);
+      }
+    } else {
       $this->view->render_view('register');
     }
   }
 
   public function do_login()
   {
-    if(isset($_POST["person"])){
-      $emailExiste = $this->validate->validateEmail($_POST["person"]);
-      $emailExiste ? header("Location: /?page=register&from=register&erro=email"): $this->crud->crud_create($_POST["person"]);
+    if (isset($_POST["person"])) {
       $this->view->render_view('home');
-    }else{
+    } else {
       $this->view->render_view('login');
     }
   }

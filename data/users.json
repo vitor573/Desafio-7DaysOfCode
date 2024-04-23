@@ -16,5 +16,17 @@
         "email": "ze@gmail.com",
         "password": "1234",
         "password-confirm": "1234"
+    },
+    {
+        "name": "zeca",
+        "email": "zeca@email.com",
+        "password": "1234567890",
+        "password-confirm": "1234567890"
+    },
+    {
+        "name": "zemano",
+        "email": "ze@mail.com",
+        "password": "0123456789",
+        "password-confirm": "0123456789"
     }
 ]
